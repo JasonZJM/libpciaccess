@@ -103,9 +103,11 @@ pci_system_cleanup( void )
 
 	    free( (char *) pci_sys->devices[i].device_string );
 	    free( (char *) pci_sys->devices[i].agp );
+	    free( (char *) pci_sys->devices[i].bridge.pci );
 
 	    pci_sys->devices[i].device_string = NULL;
 	    pci_sys->devices[i].agp = NULL;
+	    pci_sys->devices[i].bridge.pci = NULL;
 
 	    if ( pci_sys->methods->destroy_device != NULL ) {
 		(*pci_sys->methods->destroy_device)( & pci_sys->devices[i].base );
